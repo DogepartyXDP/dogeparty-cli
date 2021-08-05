@@ -146,7 +146,8 @@ def initialize(testnet=False, testcoin=False, regtest=True, customnet="",
     if config.TESTCOIN:
         config.PREFIX = b'XX'                   # 2 bytes (possibly accidentally created)
     else:
-        config.PREFIX = b'CNTRPRTY'             # 8 bytes
+        #config.PREFIX = b'CNTRPRTY'             # 8 bytes
+		config.PREFIX = b'DOGEPRTY'             # 8 bytes
 
     # (more) Testnet
     if config.TESTNET:
