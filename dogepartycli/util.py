@@ -59,7 +59,7 @@ def rpc(url, method, params=None, ssl_verify=False, tries=1):
         rpc_session = requests.Session()
         rpc_sessions[url] = rpc_session
     else:
-    	rpc_session = rpc_sessions[url]
+        rpc_session = rpc_sessions[url]
 
     response = None
     for i in range(tries):
@@ -154,6 +154,9 @@ def bootstrap(testnet=False, overwrite=True, ask_confirmation=False, quiet=False
             sys.stderr.write("read %d\n" % (readsofar,))
 
     print('Downloading database from {}...'.format(BOOTSTRAP_URL))
+    opener = urllib.request.build_opener()
+    opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+    urllib.request.install_opener(opener)
     urllib.request.urlretrieve(BOOTSTRAP_URL, TARBALL_PATH, reporthook if not quiet else None)
 
     print('Extracting to "%s"...' % data_dir)
